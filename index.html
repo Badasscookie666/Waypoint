@@ -29,7 +29,6 @@
             flex-direction: column;
         }
 
-        /* Sleek Navbar */
         nav {
             height: 70px;
             display: flex;
@@ -50,25 +49,25 @@
             text-transform: uppercase;
         }
 
-        /* Main Grid */
         main {
             flex: 1;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
         }
 
+        /* Improved Grid Logic */
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1100px;
+            /* Auto-fit creates columns based on available space without breaking */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
             width: 100%;
+            margin: 0 auto;
         }
 
-        /* Sleek Card Design */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -76,8 +75,9 @@
             border-radius: 12px;
             text-decoration: none;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensures cards in a row are same height */
         }
 
         .card:not(.disabled):hover {
@@ -95,12 +95,12 @@
         .card p {
             font-size: 0.9rem;
             color: var(--text-dim);
+            line-height: 1.5;
         }
 
         .card.disabled {
             opacity: 0.4;
             cursor: not-allowed;
-            filter: grayscale(1);
         }
 
         .status-tag {
@@ -110,11 +110,10 @@
             padding: 4px 8px;
             border-radius: 4px;
             background: #27272a;
-            display: inline-block;
+            align-self: flex-start; /* Keeps tag from stretching */
             margin-bottom: 15px;
         }
 
-        /* Footer */
         footer {
             padding: 30px;
             text-align: center;
@@ -127,14 +126,9 @@
             color: var(--text-dim);
             text-decoration: none;
             margin: 0 10px;
-            transition: color 0.2s;
         }
 
-        footer a:hover {
-            color: var(--text-main);
-        }
-
-        /* Modal / Content Sections */
+        /* Overlays */
         .page-overlay {
             display: none;
             position: fixed;
@@ -160,10 +154,6 @@
             display: inline-block;
             margin-bottom: 30px;
         }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -174,31 +164,31 @@
 
     <main>
         <div class="grid">
+            
             <a href="https://edeka-tresor.de" target="_blank" class="card">
                 <span class="status-tag" style="color: #4ade80;">Online</span>
                 <h2>Tresor Tool</h2>
                 <p>Digitales Tresor Inventur Tool.</p>
             </a>
             
-        <div class="grid">
             <a href="https://mhdpro.de" target="_blank" class="card">
                 <span class="status-tag" style="color: #4ade80;">Online</span>
                 <h2>MHDPro</h2>
                 <p>MoPro MHD Tool</p>
             </a>
             
-
             <div class="card disabled">
                 <span class="status-tag">In Arbeit</span>
                 <h2>MarktKompass</h2>
-                <p>Interne Version des Digitalen Marktmitarbeiters. </p>
+                <p>Interne Version des Digitalen Marktmitarbeiters.</p>
             </div>
 
             <div class="card disabled">
-                <span class="status-tag">In Plannung</span>
+                <span class="status-tag">In Planung</span>
                 <h2>Replan</h2>
                 <p>Programm zur Aufsteller- und Regalplanung.</p>
             </div>
+
         </div>
     </main>
 
@@ -214,17 +204,10 @@
             <h1>Impressum</h1>
             <br>
             <h3>Angaben gemäß § 5 TMG</h3>
-            <p>Collins [Nachname]<br>
-            [Straße und Hausnummer]<br>
-            [PLZ und Ort]</p>
+            <p>Collins [Nachname]<br>[Straße und Hausnummer]<br>[PLZ und Ort]</p>
             <br>
             <h3>Kontakt</h3>
-            <p>Telefon: [Telefonnummer]<br>
-            E-Mail: [E-Mail-Adresse]</p>
-            <br>
-            <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
-            Collins [Nachname]<br>
-            [Anschrift]</p>
+            <p>Telefon: [Telefonnummer]<br>E-Mail: [E-Mail-Adresse]</p>
         </div>
     </div>
 
@@ -233,10 +216,7 @@
             <a href="#" class="btn-close">← Zurück zum Dashboard</a>
             <h1>Datenschutzerklärung</h1>
             <br>
-            <p>Diese Webseite dient als reines Verzeichnis. Es werden keine Tracker, Cookies oder Analysetools verwendet, um das Nutzerverhalten zu überwachen.</p>
-            <br>
-            <h3>Server-Log-Files</h3>
-            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Files, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp, Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners und Uhrzeit der Serveranfrage.</p>
+            <p>Diese Webseite dient als reines Verzeichnis. Es werden keine Tracker, Cookies oder Analysetools verwendet.</p>
         </div>
     </div>
 
